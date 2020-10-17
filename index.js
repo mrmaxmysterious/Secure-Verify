@@ -134,7 +134,7 @@ bot.on("message", async (message) => {
             msg = await message.channel.send(Denied)
             message.delete()
         }
-    }
+    }}
 
     if (command == `unverify`) {
         if(message.member.roles.cache.find(r => r.name === "Securely Verified")) {
@@ -177,7 +177,7 @@ bot.on("message", async (message) => {
         message.channel.send(error4)
         message.delete()
     }
-}}
+}
 });
 
 bot.login(process.env.token)
