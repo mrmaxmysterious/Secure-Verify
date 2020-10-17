@@ -177,7 +177,7 @@ bot.on("message", async (message) => {
         message.channel.send(error4)
         message.delete()
     }
-}
+}}
 });
 
 bot.login(process.env.token)
