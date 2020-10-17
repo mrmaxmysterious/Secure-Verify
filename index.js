@@ -190,6 +190,32 @@ bot.on("message", async (message) => {
             msg6.edit(loaded)
         })
     }
+
+    if(command == `serverinfo`) {
+        if(message.guild.channels.cache.find(c => c.name === "secure-verify")) {
+            var ch = message.guild.channels.cache.find(c => c.name === "secure-verify")
+            if(message.guild.roles.cache.find(r => r.name === "Securely Verified")) {
+            var rol = message.guild.roles.cache.find(r => r.name === "Securely Verified")
+            const info1 = new Discord.MessageEmbed()
+            .setAuthor(message.author.username, message.author.displayAvatarURL())
+            .setDescription("Server Info: \n \n " + "```" + `Verify channel: ${ch} \n Verify Channel ID: ${ch.id} \n Verify Role: ${rol} \n Verify Role ID: ${rol.id} \n Verified Members: ${rol.members}`)
+            message.channel.send(info1)
+            message.delete()
+            } else {
+            const info3 = new Discord.MessageEmbed()
+            .setAuthor(message.author.username, message.author.displayAvatarURL())
+            .setDescription("Server Info: \n \n " + "```" + `Verify channel: ${ch} \n Verify Channel ID: ${ch.id} \n Verify Role: None \n Verify Role ID: None \n Verified Members: None`)
+            message.channel.send(info3)
+            message.delete()
+            }
+        } else {
+            const info2 = new Discord.MessageEmbed()
+            .setAuthor(message.author.username, message.author.displayAvatarURL())
+            .setDescription("Test")
+            message.channel.send(info2)
+            message.delete()
+        }
+    }
 });
 
 bot.login(process.env.token)
