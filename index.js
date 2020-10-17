@@ -112,7 +112,7 @@ bot.on("message", async (message) => {
         } else {
             const error6 = new Discord.MessageEmbed()
             .setAuthor(message.author.username, message.author.displayAvatarURL())
-            .setDescription("ERROR OCCURED: \n \n ```This server has not been setup with a verify channel. Please use the command: v-setup to setup or do it manually by creating a channel called #secure-verify```")
+            .setDescription("ERROR OCCURED: \n \n ```This server has not been setup with a verify channel. Please use the command: v-setup-channel to setup```")
             message.channel.send(error6)
             message.delete()
         }
@@ -177,6 +177,19 @@ bot.on("message", async (message) => {
         message.delete()
     }
 }
+    if(command == `setup-channel`) {
+        const loading = new Discord.MessageEmbed()
+        .setAuthor(message.author.username, message.author.displayAvatarURL())
+        .setDescription("Setting up the channel for you...")
+        msg6 = await message.channel.send(loading)
+        message.delete()
+        message.guild.channels.create("secure-verify", { reason: "Setup for Secure Verify Bot"}).then(channel => {
+            const loaded = new Discord.MessageEmbed()
+            .setAuthor(message.author.username, message.author.displayAvatarURL())
+            .setDescription(`I have setup the channel for you: \n \n Quick redirect: ${channel} \n Channel ID: ${channel.id}`)
+            msg6.edit(loaded)
+        })
+    }
 });
 
 bot.login(process.env.token)
