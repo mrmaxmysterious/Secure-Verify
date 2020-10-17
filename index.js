@@ -21,9 +21,9 @@ bot.on("message", async (message) => {
 
     if (command == `help`) {
         const helpEmbed = new Discord.MessageEmbed()
-        .setAuthor(message.author.username, message.author.avatarURL())
+        .setAuthor(message.author.username, message.author.avatarURL({dynamic: true})) // that will work :)
         .setTitle("Help Embed!")
-        .setThumbnail(message.author.displayAvatarURL({dynamic: true}))  // TRY NOW WITH THE PUBLICH THING
+        .setColor("#ffd600")
         .setDescription("**Setup Commands:** \n \n v-setup | Sets up the channel, role and also the bot! \n v-setup-channel | Sets up the channel only! \n v-setup-role | Sets up the role only! \n \n **Verify Commands:** \n \n v-verify | Go through the verify procedure. (**ONLY WORKS IN VERIFY CHANNEL**) \n v-verifycheck | Checks if you are verified. \n v-unverify | unVerify (**YOU HAVE TO REDO THE VERIFY COMMAND TO REVERIFY**)")
         message.channel.send(helpEmbed)
     }
