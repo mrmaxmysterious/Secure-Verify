@@ -231,6 +231,8 @@ bot.on("message", async (message) => {
             const done = new Discord.MessageEmbed()
             .setAuthor(message.author.username, message.author.displayAvatarURL())
             .setDescription(`Created the role! Info: \n \n Role: ${role} \n Role ID: ${role.id}`)
+            message.channel.send(done)
+            message.delete()
         })
     }
 });
