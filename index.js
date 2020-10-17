@@ -35,7 +35,7 @@ bot.on("message", async (message) => {
                   reason: 'Setup for Secure Verify Bot',
             }).then(b => {
                 const done = new Discord.MessageEmbed()
-                .setDescription(`Completed! Your new verify channel is: ${a}! Your new role is: ${b}!`)
+                .setDescription(`Completed! Info: \n \n **Channel Info:** \n \n Quick Redirect: ${a} \n Channel ID: ${a.id} \n \n **Role Info:** \n \n Role Name: ${b} \n Role ID: ${b.id}`)
                 msg.edit(done)
             })
         })
