@@ -118,7 +118,7 @@ bot.on("message", async (message) => {
             message.channel.send(error6)
             message.delete()
         }
-    }
+    }}
     
     if (command == `verifycheck`) {
         if(message.member.roles.cache.find(r => r.name === "Securely Verified")) {
@@ -134,7 +134,7 @@ bot.on("message", async (message) => {
             msg = await message.channel.send(Denied)
             message.delete()
         }
-    }}
+    }
 
     if (command == `unverify`) {
         if(message.member.roles.cache.find(r => r.name === "Securely Verified")) {
