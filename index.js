@@ -161,6 +161,7 @@ bot.on("message", async (message) => {
         .setAuthor(message.author.username, message.author.displayAvatarURL())
         .setDescription("ERROR OCCURED: \n \n ```You are not verified.```")
         message.channel.send(error4)
+        message.delete()
     }
 }
 });
