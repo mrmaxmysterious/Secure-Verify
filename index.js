@@ -105,7 +105,7 @@ bot.on("message", async (message) => {
             var ch = message.guild.channels.cache.find(c => c.name === "secure-verify")
             const error5 = new Discord.MessageEmbed()
             .setAuthor(message.author.username, message.author.displayAvatarURL())
-            .setDescription("ERROR OCCURED: \n \n ```You can only use this command in the setup verify channel.``` \n Verify channel:")
+            .setDescription("ERROR OCCURED: \n \n ```You can only use this command in the setup verify channel.``` \n Verify channel:" + `<#${ch.id}>`)
             message.channel.send(error5)
             message.channel.send(`<#${ch.id}>`)
         }
