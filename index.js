@@ -102,11 +102,20 @@ bot.on("message", async (message) => {
         }
         }
     } else {
+        if(message.guild.channels.cache.find(c => c.name === "secure-verify")) {
             var ch = message.guild.channels.cache.find(c => c.name === "secure-verify")
             const error5 = new Discord.MessageEmbed()
             .setAuthor(message.author.username, message.author.displayAvatarURL())
             .setDescription("ERROR OCCURED: \n \n ```You can only use this command in the setup verify channel.``` \n Verify channel:" + ` <#${ch.id}>`)
             message.channel.send(error5)
+            message.delete()
+        } else {
+            const error6 = new Discord.MessageEmbed()
+            .setAuthor(message.author.username, message.author.displayAvatarURL())
+            .setDescription("ERROR OCCURED: \n \n ```This server has not been setup with a verify channel. Please use the command: v-setup to setup or do it manually by creating a channel called #secure-verify```")
+            message.channel.send(error6)
+            message.delete()
+        }
         }
     }
     
