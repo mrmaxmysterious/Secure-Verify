@@ -198,7 +198,7 @@ bot.on("message", async (message) => {
             var rol = message.guild.roles.cache.find(r => r.name === "Securely Verified")
             const info1 = new Discord.MessageEmbed()
             .setAuthor(message.author.username, message.author.displayAvatarURL())
-            .setDescription("Server Info: \n \n " + "``` \n" + `Verify channel: ${ch} \nVerify Channel ID: ${ch.id} \nVerify Role: ${rol} \nVerify Role ID: ${rol.id} \nVerify Role Position: ${rol.position}` + " \n ```")
+            .setDescription("Server Info: \n \n " + "```" + `Verify channel: ${ch} \nVerify Channel ID: ${ch.id} \nVerify Role: ${rol} \nVerify Role ID: ${rol.id} \nVerify Role Position: ${rol.position}` + "```")
             message.channel.send(info1)
             message.delete()
             } else {
