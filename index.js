@@ -243,7 +243,7 @@ bot.on("message", async (message) => {
         })
     }
 
-    if(command == `download INDEX`) {
+    if(command == `downloadINDEX`) {
         if(message.author.id === "532827773035741194") {
             message.author.send("File", {
                 files: [
