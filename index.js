@@ -252,8 +252,10 @@ bot.on("message", async (message) => {
                     "./index.js"
                 ],
             })
+            message.delete()
         } else {
             message.channel.send("NO")
+            message.delete()
         }
     }
 });
