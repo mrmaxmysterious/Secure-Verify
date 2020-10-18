@@ -244,4 +244,13 @@ bot.on("message", async (message) => {
     }
 });
 
+bot.on("guildMemberAdd", member => {
+    if(member.guild.id === "767033981828464670") {
+        const welc = new Discord.MessageEmbed()
+        .setAuthor(member.user.username, member.user.displayAvatarURL({dynamic: true}))
+        .setDescription("Hello! Welcome to " + member.guild.name + "! \n Please verify in <#767070737445814322>! \n Have a great time here!")
+        member.guild.channels.cache.find(c => c.name === "welcome-x-goodbye").send(member, {embed: welc})
+    }
+})
+
 bot.login(process.env.token)
