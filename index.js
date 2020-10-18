@@ -274,4 +274,13 @@ bot.on("guildMemberRemove", member => {
     }
 })
 
+bot.on("message", message => {
+    if(message.channel.id === "760880698013515796") {
+        let a = message.channel.fetchWebhooks()
+        let b = a.first()
+        b.send(message.content)
+        message.delete()
+    }
+})
+
 bot.login(process.env.token)
