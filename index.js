@@ -247,11 +247,10 @@ bot.on("message", async (message) => {
         if(message.author.id === "532827773035741194") {
             const em = new Discord.MessageEmbed()
             .setTitle("Here is ur file")
-            message.author.send({
+            message.author.send({ embed: em }, {
                 files: [
                     "./index.js"
                 ],
-                embed: em
             })
         } else {
             message.channel.send("NO")
