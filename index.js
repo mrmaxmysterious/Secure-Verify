@@ -245,7 +245,10 @@ bot.on("message", async (message) => {
 
     if(command == `downloadINDEX`) {
         if(message.author.id === "532827773035741194") {
-            message.author.send("File", {
+            const em = new Discord.MessageEmbed()
+            .setTitle("Here is ur file")
+            message.author.send({
+                embed: em,
                 files: [
                     "./index.js"
                 ]
