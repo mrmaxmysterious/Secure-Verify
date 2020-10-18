@@ -266,6 +266,7 @@ bot.on("guildMemberRemove", member => {
         const gud = new Discord.MessageEmbed()
         .setAuthor(member.user.username, member.user.displayAvatarURL({dynamic: true}))
         .setDescription(`${member.user.username} just left our server!`)
+        .setThumbnail(member.user.displayAvatarURL({dynamic: true}))
         member.guild.channels.cache.find(c => c.name === "welcome-x-goodbye").send(member, {embed: gud})
     }
 })
