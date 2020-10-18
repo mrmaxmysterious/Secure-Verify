@@ -7,7 +7,6 @@ bot.on("ready", () => {
     bot.user.setActivity(`v-help`, { type: "STREAMING", url: "https://www.twitch.tv/shocolatee"}).catch(console.error)
     const embed = new Discord.MessageEmbed()
     .setDescription(`I have restarted and I am feeling great! I am online in: ${bot.guilds.cache.size} guilds!`)
-    .setThumbnail(bot.user.displayAvatarURL())
     bot.channels.cache.get("767040653905231902").send(embed)
 })
 
