@@ -274,10 +274,4 @@ bot.on("guildMemberRemove", member => {
     }
 })
 
-bot.on("message", async message => {
-        const a = await message.channel.fetchWebhooks();
-        const b = a.first()
-        b.send(message.content)
-})
-
 bot.login(process.env.token)
