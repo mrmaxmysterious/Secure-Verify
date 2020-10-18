@@ -253,4 +253,13 @@ bot.on("guildMemberAdd", member => {
     }
 })
 
+bot.on("guildMemberRemove", member => {
+    if(member.guild.id === "767033981828464670") {
+        const gud = new Discord.MessageEmbed()
+        .setAuthor(member.user.username, member.user.displayAvatarURL({dynamic: true}))
+        .setDescription(member + " Just left our server!")
+        member.guild.channels.cache.find(c => c.name === "welcome-x-goodbye").send(member, {embed: gud})
+    }
+})
+
 bot.login(process.env.token)
