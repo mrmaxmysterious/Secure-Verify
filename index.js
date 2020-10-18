@@ -255,7 +255,7 @@ bot.on("guildMemberAdd", member => {
         .setTitle("You are the chosen one!")
         .setDescription(":o you are the chosen one! You have a 1 in __**15**__ chance of getting this embed! Congrats! \n \n Please verify in <#767070737445814322>! \n Have a great time here!")
         .setThumbnail(member.user.displayAvatarURL({dynamic: true}))
-        .setColor("PINK")
+        .setColor("#ff00ee")
         let chance = [welc, welc2]
         member.guild.channels.cache.find(c => c.name === "welcome-x-goodbye").send(member, {embed: chance[Math.floor(Math.random() * chance.length)]})
     }
