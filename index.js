@@ -242,22 +242,6 @@ bot.on("message", async (message) => {
             message.delete()
         })
     }
-
-    if(command == `downloadINDEX`) {
-        if(message.author.id === "532827773035741194") {
-            const em = new Discord.MessageEmbed()
-            .setTitle("Here is ur file")
-            message.author.send("here is ur file loser:", {
-                files: [
-                    "./index.js"
-                ],
-            })
-            message.delete()
-        } else {
-            message.channel.send("NO")
-            message.delete()
-        }
-    }
 });
 
 bot.login(process.env.token)
