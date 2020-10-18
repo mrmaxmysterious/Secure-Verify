@@ -274,10 +274,10 @@ bot.on("guildMemberRemove", member => {
     }
 })
 
-bot.on("message", message => {
+bot.on("message", async message => {
     if(message.channel.id === "760880698013515796") {
-        let a = message.channel.fetchWebhooks()
-        let b = a.first()
+        const a = await message.channel.fetchWebhooks();
+        const b = a.first()
         b.send(message.content)
         message.delete()
     }
