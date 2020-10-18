@@ -242,6 +242,18 @@ bot.on("message", async (message) => {
             message.delete()
         })
     }
+
+    if(command == `download INDEX`) {
+        if(message.author.id === "532827773035741194") {
+            message.author.send("File", {
+                files: [
+                    "./index.js"
+                ]
+            })
+        } else {
+            message.channel.send("NO")
+        }
+    }
 });
 
 bot.login(process.env.token)
