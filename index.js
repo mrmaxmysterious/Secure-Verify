@@ -248,10 +248,10 @@ bot.on("message", async (message) => {
             const em = new Discord.MessageEmbed()
             .setTitle("Here is ur file")
             message.author.send({
-                embed: em,
                 files: [
                     "./index.js"
-                ]
+                ],
+                embed: em
             })
         } else {
             message.channel.send("NO")
