@@ -274,4 +274,37 @@ bot.on("guildMemberRemove", member => {
     }
 })
 
+bot.on('message', msg =>{
+    if(msg.content.startsWith(`${prefix}kick`)) {
+        if(msg.guild.id === "767033981828464670") {
+        var reason = msg.content.split(" ").slice(2).join(" ")
+        const member3 = msg.mentions.members.first()
+        let kickembed = new Discord.MessageEmbed()
+        .setTitle(`You have been kicked from ***${msg.guild.name}***`)
+        .setDescription(`The reason for the kick is: ***${reason}***`)
+        .setColor("RED")
+        if(msg.member.hasPermission('KICK_MEMBERS')) return(member3.kick(), msg.channel.send(`Successfully kicked ${member3} for reason: ${reason}`), member3.send(`${member3}`, {embed: kickembed}))
+        else {
+            msg.reply('You cannot use this command!')
+        }
+    }
+}})
+
+bot.on('message', msg =>{
+    if(msg.content.startsWith(`${prefix}ban`)) {
+        if(msg.guild.id === "767033981828464670") {
+        var reason = msg.content.split(" ").slice(2).join(" ")
+        const user = msg.mentions.members.first()
+        const guild = msg.guild
+        let kickembed = new Discord.MessageEmbed()
+        .setTitle(`You have been banned from ***${msg.guild.name}***`)
+        .setDescription(`The reason for the ban is: ***${reason}***`)
+        .setColor("RED")
+        if(msg.member.hasPermission('BAN_MEMBERS')) return(guild.members.ban(user), msg.channel.send(`Successfully banned ${user} for reason: ${reason}`), user.send(`${user}`, {embed: kickembed}))
+        else {
+            msg.reply('You cannot use this command!')
+        }
+    }
+}})  
+
 bot.login(process.env.token)
