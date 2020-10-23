@@ -104,10 +104,9 @@ bot.on("message", async (message) => {
               }
           }).catch(() => {
               const noreply = new Discord.MessageEmbed()
-              .setAuthor(message.author.username, message.author.displayAvatarURL())
-              .setDescription("No response in 30 seconds, please retry.")
+              .setAuthor(message.author.username, message.author.displayAvatarURL({dynamic: true}))
+              .setDescription("No response in 30 seconds. Please retry by using the command `v-verify`")
               msg3.edit(noreply)
-              msg.delete()
               message.delete()
           })
         } else {
