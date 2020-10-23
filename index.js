@@ -102,6 +102,11 @@ bot.on("message", async (message) => {
                 msg.delete()
                 message.delete()
               }
+          }).catch(() => {
+              const noreply = new Discord.MessageEmbed()
+              .setAuthor(message.author.username, message.author.displayAvatarURL())
+              .setDescription("No response in 30 seconds, please retry.")
+              msg3.edit()
           })
         } else {
             const error = new Discord.MessageEmbed()
