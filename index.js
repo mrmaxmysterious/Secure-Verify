@@ -259,7 +259,6 @@ bot.on("guildMemberAdd", member => {
         .setAuthor(member.user.username, member.user.displayAvatarURL({dynamic: true}))
         .setDescription("Hello! Welcome to " + member.guild.name + "! \n Please verify in <#767070737445814322>! \n Have a great time here!")
         .setThumbnail(member.user.displayAvatarURL({dynamic: true}))
-        .setFooter("This user is in " + member.guilds.cache.size())
         const welc2 = new Discord.MessageEmbed()
         .setAuthor(member.user.username, member.user.displayAvatarURL({dynamic: true}))
         .setTitle("You are the chosen one!")
@@ -276,6 +275,7 @@ bot.on("guildMemberRemove", member => {
         const gud = new Discord.MessageEmbed()
         .setAuthor(member.user.username, member.user.displayAvatarURL({dynamic: true}))
         .setDescription(`${member.user.username} just left our server!`)
+        .setFooter("Their last message was: `" + member.lastMessage + "`")
         .setThumbnail(member.user.displayAvatarURL({dynamic: true}))
         member.guild.channels.cache.find(c => c.name === "welcome-x-goodbye").send(member, {embed: gud})
     }
