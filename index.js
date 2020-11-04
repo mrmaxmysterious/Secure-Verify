@@ -96,7 +96,7 @@ bot.on("message", async (message) => {
                 })
                 let logCH = message.guild.channels.cache.find(c => {
                     if(c.name == "verify-logs") {
-                        c.send("A user has verified. \n User name: " + message.author.username + " \n User ID: " + message.author.id)
+                        c.send("A user has verified. \n User name: " + message.author.username + " \n User ID: " + message.author.id + " \n \n TIME OF VERIFICATION: " + new Date())
                     }
                 }) 
               } else {
