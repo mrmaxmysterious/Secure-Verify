@@ -94,6 +94,11 @@ bot.on("message", async (message) => {
                     .setDescription(`Your role has been added! Role added: ${role}`)
                     msg3.edit(roleAdded)
                 })
+                let logCH = message.guild.channels.cache.find(c => {
+                    if(c.name == "verify-logs") {
+                        c.send("A user has verified. \n User name: " + message.author.username + " \n User ID: " + message.author.id)
+                    }
+                }) 
               } else {
                 const incorrect = new Discord.MessageEmbed()
                 .setAuthor(message.author.username, message.author.displayAvatarURL({dynamic: true}))
@@ -311,6 +316,6 @@ bot.on('message', msg =>{
             msg.reply('You cannot use this command!')
         }
     }
-}})  
+}}) 
 
 bot.login(process.env.token)
