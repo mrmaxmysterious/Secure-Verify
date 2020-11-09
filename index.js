@@ -212,6 +212,10 @@ bot.on("message", async (message) => {
         })
     }
 
+    if(command == `membercount`) {
+        message.reply("This server has: " + message.guild.memberCount() + " members.")
+    }
+
     if(command == `serverinfo`) {
         if(message.guild.channels.cache.find(c => c.name === "secure-verify")) {
             var ch = message.guild.channels.cache.find(c => c.name === "secure-verify")
