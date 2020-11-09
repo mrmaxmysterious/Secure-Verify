@@ -213,7 +213,7 @@ bot.on("message", async (message) => {
     }
 
     if(command == `membercount`) {
-        message.reply("This server has: " + message.guild.memberCount() + " members.")
+        message.reply("This server has: " + message.guild.memberCount + " members.")
     }
 
     if(command == `serverinfo`) {
