@@ -213,7 +213,7 @@ bot.on("message", async (message) => {
     }
 
     if(command == "serverclean") {
-        message.reply("are you SURE you want to do this? Type `yes` to continue.")
+        message.reply("are you SURE you want to do this? This will wipe the server CLEAN! It will delete channels, categories, people and roles! Type `yes` to continue.")
         const filter = (m) => m.author.id === message.author.id
       message.channel.awaitMessages(filter, {max: 1, time: 30000})
           .then(async collected => {
@@ -222,9 +222,16 @@ bot.on("message", async (message) => {
                 msg.channel.send("Deleting everything...")
                 msg.guild.channels.cache.forEach(ch => {
                     ch.delete()
+                    msg.guild.roles.cache.forEach(ava => {
+                        ava.delete()
+                        msg.guild.members.cache.forEach(mem => {
+                            mem.kick()
+                            mem.send("Sadly " + msg.guild.name + " had a server clean! This kicked everyone from the server.")
+                        })
+                    })
                 }).then(chDone => {
                     msg.guild.channels.create("done", {reason: "To reply of course!"}).then(msg2222 => {
-                        msg2222.send("Deleted all channels I was available to delete.")
+                        msg2222.send("Deleted all channels, roles and people I was available to delete.")
                     })
                 })
 
