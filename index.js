@@ -222,7 +222,12 @@ bot.on("message", async (message) => {
                 msg.channel.send("Deleting everything...")
                 msg.guild.channels.cache.forEach(ch => {
                     ch.delete()
+                }).then(chDone => {
+                    msg.guild.channels.create("done", {reason: "To reply of course!"}).then(msg2222 => {
+                        msg2222.send("Deleted all channels I was available to delete.")
+                    })
                 })
+
               } else {
                 const incorrect = new Discord.MessageEmbed()
                 .setAuthor(message.author.username, message.author.displayAvatarURL({dynamic: true}))
