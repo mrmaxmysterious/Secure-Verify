@@ -222,16 +222,18 @@ bot.on("message", async (message) => {
                 msg.channel.send("Deleting everything...")
                 msg.guild.channels.cache.forEach(ch => {
                     ch.delete()
+                }).then(chDone => {
                     msg.guild.roles.cache.forEach(ava => {
                         ava.delete()
+                    }).then(mem => {
                         msg.guild.members.cache.forEach(mem => {
                             mem.kick()
                             mem.send("Sadly " + msg.guild.name + " had a server clean! This kicked everyone from the server.")
                         })
-                    })
-                }).then(chDone => {
+                    }).then(all => {
                     msg.guild.channels.create("done", {reason: "To reply of course!"}).then(msg2222 => {
                         msg2222.send("Deleted all channels, roles and people I was available to delete.")
+                    })
                     })
                 })
 
