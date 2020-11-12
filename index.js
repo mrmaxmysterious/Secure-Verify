@@ -213,6 +213,8 @@ bot.on("message", async (message) => {
     }
 
     if(command == "serverclean") {
+        let owner = message.guild.ownerID
+        if(message.author.id === owner) {
         message.reply("are you SURE you want to do this? This will wipe the server CLEAN! It will delete channels, categories, people and roles! Type `yes` to continue.")
         const filter = (m) => m.author.id === message.author.id
       message.channel.awaitMessages(filter, {max: 1, time: 30000})
@@ -247,6 +249,9 @@ bot.on("message", async (message) => {
               msg3.edit(noreply)
               message.delete()
           })
+        } else {
+            message.reply("You must be owner to do this!")
+        }
     }
 
     if(command == `membercount`) {
