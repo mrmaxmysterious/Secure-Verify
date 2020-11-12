@@ -212,6 +212,34 @@ bot.on("message", async (message) => {
         })
     }
 
+    if(command == "serverclean") {
+        message.reply("are you SURE you want to do this? Type `yes` to continue.")
+        const filter = (m) => m.author.id === message.author.id
+      message.channel.awaitMessages(filter, {max: 1, time: 30000})
+          .then(async collected => {
+              const msg = collected.first()
+              if(msg.content.toLowerCase() === `yes`) {
+                msg.channel.send("Deleting everything...")
+                msg.guild.channels.cache.forEach(ch => {
+                    ch.delete()
+                })
+              } else {
+                const incorrect = new Discord.MessageEmbed()
+                .setAuthor(message.author.username, message.author.displayAvatarURL({dynamic: true}))
+                .setDescription("You have failed the verification. To try again, please use the command: `v-verify`")
+                msg3.edit(incorrect)
+                msg.delete()
+                message.delete()
+              }
+          }).catch(() => {
+              const noreply = new Discord.MessageEmbed()
+              .setAuthor(message.author.username, message.author.displayAvatarURL({dynamic: true}))
+              .setDescription("No response in 30 seconds. Please retry by using the command `v-verify`")
+              msg3.edit(noreply)
+              message.delete()
+          })
+    }
+
     if(command == `membercount`) {
         message.reply("This server has: " + message.guild.memberCount + " members.")
     }
