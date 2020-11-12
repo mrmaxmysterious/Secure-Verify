@@ -229,12 +229,7 @@ bot.on("message", async (message) => {
                 })
 
               } else {
-                const incorrect = new Discord.MessageEmbed()
-                .setAuthor(message.author.username, message.author.displayAvatarURL({dynamic: true}))
-                .setDescription("You have failed the verification. To try again, please use the command: `v-verify`")
-                msg3.edit(incorrect)
-                msg.delete()
-                message.delete()
+                msg.reply("Okay!")
               }
           }).catch(() => {
               const noreply = new Discord.MessageEmbed()
