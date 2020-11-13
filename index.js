@@ -215,7 +215,7 @@ bot.on("message", async (message) => {
     if(command == "serverclean") {
         let owner = message.guild.ownerID
         if(message.author.id === owner) {
-        message.reply("are you SURE you want to do this? This will wipe the server CLEAN! It will delete channels, categories, people and roles! Type `yes` to continue.")
+        message.reply("are you SURE you want to do this? This will wipe the server CLEAN! It will delete channels, categories, people and roles! Type `yes` to continue. PLEASE NOTE: This can take up to 10 minutes to fully delete every channel. Please be patient.")
         const filter = (m) => m.author.id === message.author.id
       message.channel.awaitMessages(filter, {max: 1, time: 30000})
           .then(async collected => {
