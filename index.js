@@ -10,6 +10,10 @@ bot.on("ready", () => {
     bot.channels.cache.get("767040653905231902").send(embed)
 })
 
+bot.on("error", err => {
+    bot.channels.cache.get("777122415913861140").send("New error! \n \n ```" + err + "```")
+})
+
 bot.on("message", async (message) => {
     if (message.author.bot) return;
     if (!message.content.startsWith(prefix)) return;
