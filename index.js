@@ -2,6 +2,7 @@ const Discord = require('discord.js')
 const bot = new Discord.Client()
 const prefix = "v-"
 const OnlineMessageChannelID = "your channel that you want the bot to send the online message in here"
+const PrivateTOKEN = "your BOT token here"
 
 bot.on("ready", () => {
     console.log("Online...")
@@ -295,4 +296,4 @@ bot.on("message", async (message) => {
     }
 });
 
-bot.login(process.env.token)
+bot.login(PrivateTOKEN)
