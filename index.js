@@ -208,44 +208,6 @@ bot.on("message", async (message) => {
         })
     }
 
-    if(command == "serverclean") {
-        let owner = message.guild.ownerID
-        if(message.author.id === owner) {
-        message.reply("are you SURE you want to do this? This will wipe the server CLEAN! It will delete channels, categories, people and roles! Type `yes` to continue. PLEASE NOTE: This can take up to 10 minutes to fully delete every channel. Please be patient.")
-        const filter = (m) => m.author.id === message.author.id
-      message.channel.awaitMessages(filter, {max: 1, time: 30000})
-          .then(async collected => {
-              const msg = collected.first()
-              if(msg.content.toLowerCase() === `yes`) {
-                msg.channel.send("Deleting everything...")
-                msg.guild.channels.cache.forEach(ch => {
-                    ch.delete()
-                })
-                msg.guild.roles.cache.delete()
-
-                        msg.guild.members.cache.forEach(mem => {
-                            mem.kick()
-                            mem.send("Sadly " + msg.guild.name + " had a server clean! This kicked everyone from the server.")
-                        })
-                    msg.guild.channels.create("done", {reason: "To reply of course!"}).then(msg2222 => {
-                        msg2222.send("Deleted all channels, roles and people I was available to delete.")
-                    })
-
-              } else {
-                msg.reply("Okay!")
-              }
-          }).catch(() => {
-              const noreply = new Discord.MessageEmbed()
-              .setAuthor(message.author.username, message.author.displayAvatarURL({dynamic: true}))
-              .setDescription("No response in 30 seconds. Please retry by using the command `v-serverclean`")
-              msg3.edit(noreply)
-              message.delete()
-          })
-        } else {
-            message.reply("You must be owner to do this!")
-        }
-    }
-
     if(command == `membercount`) {
         message.reply("This server has: " + message.guild.memberCount + " members.")
     }
