@@ -1,17 +1,14 @@
 const Discord = require('discord.js')
 const bot = new Discord.Client()
 const prefix = "v-"
+const OnlineMessageChannelID = "your channel that you want the bot to send the online message in here"
 
 bot.on("ready", () => {
     console.log("Online...")
     bot.user.setActivity(`v-help`, { type: "STREAMING", url: "https://www.twitch.tv/shocolatee"}).catch(console.error)
     const embed = new Discord.MessageEmbed()
     .setDescription(`I have restarted and I am feeling great! I am online in: ${bot.guilds.cache.size} guilds!`)
-    bot.channels.cache.get("767040653905231902").send(embed)
-})
-
-bot.on("error", err => {
-    bot.channels.cache.get("777122415913861140").send("New error! \n \n ```" + err + "```")
+    bot.channels.cache.get(OnlineMessageChannelID).send(embed)
 })
 
 bot.on("message", async (message) => {
@@ -297,65 +294,5 @@ bot.on("message", async (message) => {
         })
     }
 });
-
-bot.on("guildMemberAdd", member => {
-    if(member.guild.id === "767033981828464670") {
-        const welc = new Discord.MessageEmbed()
-        .setAuthor(member.user.username, member.user.displayAvatarURL({dynamic: true}))
-        .setDescription("Hello! Welcome to " + member.guild.name + "! \n Please verify in <#767070737445814322>! \n Have a great time here!")
-        .setThumbnail(member.user.displayAvatarURL({dynamic: true}))
-        const welc2 = new Discord.MessageEmbed()
-        .setAuthor(member.user.username, member.user.displayAvatarURL({dynamic: true}))
-        .setTitle("You are the chosen one!")
-        .setDescription(":o you are the chosen one! You have a 1 in __**15**__ chance of getting this embed! Congrats! \n \n Please verify in <#767070737445814322>! \n Have a great time here!")
-        .setThumbnail(member.user.displayAvatarURL({dynamic: true}))
-        .setColor("#ff00ee")
-        let chance = [welc, welc, welc, welc, welc, welc, welc, welc, welc, welc, welc, welc, welc, welc, welc2]
-        member.guild.channels.cache.find(c => c.name === "welcome-x-goodbye").send(member, {embed: chance[Math.floor(Math.random() * chance.length)]})
-    }
-})
-
-bot.on("guildMemberRemove", member => {
-    if(member.guild.id === "767033981828464670") {
-        const gud = new Discord.MessageEmbed()
-        .setAuthor(member.user.username, member.user.displayAvatarURL({dynamic: true}))
-        .setDescription(`${member.user.username} just left our server!`)
-        .setThumbnail(member.user.displayAvatarURL({dynamic: true}))
-        member.guild.channels.cache.find(c => c.name === "welcome-x-goodbye").send(member, {embed: gud})
-    }
-})
-
-bot.on('message', msg =>{
-    if(msg.content.startsWith(`${prefix}kick`)) {
-        if(msg.guild.id === "767033981828464670") {
-        var reason = msg.content.split(" ").slice(2).join(" ")
-        const member3 = msg.mentions.members.first()
-        let kickembed = new Discord.MessageEmbed()
-        .setTitle(`You have been kicked from ***${msg.guild.name}***`)
-        .setDescription(`The reason for the kick is: ***${reason}***`)
-        .setColor("RED")
-        if(msg.member.hasPermission('KICK_MEMBERS')) return(member3.kick(), msg.channel.send(`Successfully kicked ${member3} for reason: ${reason}`), member3.send(`${member3}`, {embed: kickembed}))
-        else {
-            msg.reply('You cannot use this command!')
-        }
-    }
-}})
-
-bot.on('message', msg =>{
-    if(msg.content.startsWith(`${prefix}ban`)) {
-        if(msg.guild.id === "767033981828464670") {
-        var reason = msg.content.split(" ").slice(2).join(" ")
-        const user = msg.mentions.members.first()
-        const guild = msg.guild
-        let kickembed = new Discord.MessageEmbed()
-        .setTitle(`You have been banned from ***${msg.guild.name}***`)
-        .setDescription(`The reason for the ban is: ***${reason}***`)
-        .setColor("RED")
-        if(msg.member.hasPermission('BAN_MEMBERS')) return(guild.members.ban(user), msg.channel.send(`Successfully banned ${user} for reason: ${reason}`), user.send(`${user}`, {embed: kickembed}))
-        else {
-            msg.reply('You cannot use this command!')
-        }
-    }
-}}) 
 
 bot.login(process.env.token)
