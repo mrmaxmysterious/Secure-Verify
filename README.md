@@ -17,4 +17,4 @@ Cool! You want to Self Host MyVerify! Here are a few things you need to know:
 
       Enjoy your new bot! To turn it on, go to the terminal and type: `node .`
 
-```Please check back here every month just to make sure your bot is up to date!
+```Please check back here every month just to make sure your bot is up to date!```
