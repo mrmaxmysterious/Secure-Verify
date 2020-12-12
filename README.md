@@ -16,3 +16,5 @@ Cool! You want to Self Host MyVerify! Here are a few things you need to know:
 4. Now go to the index.js file you made on your folder on your bot and press "CTRL + V" or with mac: "CMD + V".
 
       Enjoy your new bot! To turn it on, go to the terminal and type: `node .`
+
+```Please check back here every month just to make sure your bot is up to date!
