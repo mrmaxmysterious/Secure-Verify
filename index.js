@@ -114,7 +114,7 @@ bot.on("message", async (message) => {
               } else {
                 const incorrect = new Discord.MessageEmbed()
                 .setAuthor(message.author.username, message.author.displayAvatarURL({dynamic: true}))
-                .setDescription("You have failed the verification. To try again, please use the command: `v-verify`")
+                .setDescription("You have failed the verification. To try again, please use the command: `" + prefix + "verify`")
                 msg3.edit(incorrect)
                 msg.delete()
                 message.delete()
@@ -122,7 +122,7 @@ bot.on("message", async (message) => {
           }).catch(() => {
               const noreply = new Discord.MessageEmbed()
               .setAuthor(message.author.username, message.author.displayAvatarURL({dynamic: true}))
-              .setDescription("No response in 30 seconds. Please retry by using the command `v-verify`")
+              .setDescription("No response in 30 seconds. Please retry by using the command `" + prefix + "verify`")
               msg3.edit(noreply)
               message.delete()
           })
@@ -145,7 +145,7 @@ bot.on("message", async (message) => {
         } else {
             const error6 = new Discord.MessageEmbed()
             .setAuthor(message.author.username, message.author.displayAvatarURL({dynamic: true}))
-            .setDescription("ERROR OCCURED: \n \n ```This server has not been setup with a verify channel. Please use the command: v-setup-channel to setup```")
+            .setDescription("ERROR OCCURED: \n \n ```This server has not been setup with a verify channel. Please use the command: " + prefix + "setup-channel to setup```")
             message.channel.send(error6)
             message.delete()
         }
