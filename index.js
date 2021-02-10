@@ -314,12 +314,6 @@ bot.on("message", async (message) => {
         message.channel.send(info3)
         message.delete()
       }
-    } else {
-      const info2 = new Discord.MessageEmbed()
-        .setAuthor(message.author.username, message.author.displayAvatarURL({ dynamic: true }))
-        .setDescription("Test")
-      message.channel.send(info2)
-      message.delete()
     }
   }
 
