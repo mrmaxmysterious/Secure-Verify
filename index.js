@@ -1,5 +1,370 @@
-const prefix = "v-"
+const prefix = "v-" // If you change this, you will need to change a lot in the script.
 const OnlineMessageChannelID = "your channel that you want the bot to send the online message in here"
 const PrivateTOKEN = "your BOT token here"
+const Discord = require('discord.js')
+const bot = new Discord.Client({ ws: { properties: { $browser: "Discord iOS" }}})
 
-const _0x2a09=['bot','930529qYOjZQ','user','hasPermission','\x20\x0a\x20Channel\x20ID:\x20','verify\x20|\x20Go\x20through\x20the\x20verify\x20procedure.\x20(**ONLY\x20WORKS\x20IN\x20VERIFY\x20CHANNEL**)\x20\x0a\x20','setTitle','author','split','ERROR\x20OCCURED:\x20\x0a\x20\x0a\x20```Your\x20server\x20has\x20not\x20been\x20setup\x20with\x20the\x20Verified\x20Role.```','\x20guilds!','ERROR\x20OCCURED:\x20\x0a\x20\x0a\x20```You\x20do\x20not\x20have\x20permissions.\x20Permissions\x20required:\x20ADMINISTRATOR```','**Setup\x20Commands:**\x20\x0a\x20\x0a\x20','member','ready','channels','channel','error','verify`','ERROR\x20OCCURED:\x20\x0a\x20\x0a\x20```This\x20server\x20has\x20not\x20been\x20setup\x20with\x20a\x20verify\x20channel.\x20Please\x20use\x20the\x20command:\x20','roles','2591064BNiKFU','slice','MessageEmbed','react','username','Setup\x20for\x20Secure\x20Verify\x20Bot','then','\x20\x0a\x20\x0a\x20TIME\x20OF\x20VERIFICATION:\x20','__***','setDescription','log','\x20\x0aVerify\x20Role\x20Position:\x20','length','You\x20have\x20been\x20kept\x20verified.','remove','unverify\x20|\x20unVerify\x20(**YOU\x20HAVE\x20TO\x20REDO\x20THE\x20VERIFY\x20COMMAND\x20TO\x20REVERIFY**)','verify','help','serverinfo','removeAll','get','\x20\x0a\x20Role\x20ID:\x20','Securely\x20Verified','I\x20have\x20restarted\x20and\x20I\x20am\x20feeling\x20great!\x20I\x20am\x20online\x20in:\x20','Creating\x20the\x20role...','emoji','guilds','avatarURL','add','You\x20have\x20been\x20unVerified.','setup-role\x20|\x20Sets\x20up\x20the\x20role\x20only!\x20\x0a\x20\x0a\x20**Verify\x20Commands:**\x20\x0a\x20\x0a\x20','```','Created\x20the\x20role!\x20Info:\x20\x0a\x20\x0a\x20Role:\x20','message','This\x20server\x20has:\x20','GREEN','Test','first','\x20members.','#211d1d','setColor','I\x20have\x20setup\x20the\x20channel\x20for\x20you:\x20\x0a\x20\x0a\x20Quick\x20redirect:\x20','With\x20this\x20verification\x20please\x20reply\x20with\x20this\x20code\x20below\x20in\x20under\x2030\x20seconds:\x20\x0a\x20\x0a\x20***__','awaitMessages','guild','5WcCozl','reply','name','cache','shift','login','MANAGE_CHANNELS','\x20<#','size','random','126921KSQjhw','400506nRcYSX','\x20\x0a\x20Verify\x20Role:\x20None\x20\x0a\x20Verify\x20Role\x20ID:\x20None\x20\x0a\x20Verified\x20Members:\x20None','displayAvatarURL','memberCount','floor','\x20\x0a\x20\x0a\x20**Role\x20Info:**\x20\x0a\x20\x0a\x20Role\x20Name:\x20','623638tiKiyd','\x20\x0aVerify\x20Role:\x20','https://www.twitch.tv/shocolatee','create','join','\x20\x0aVerify\x20Channel\x20ID:\x20','edit','Help\x20Embed!','setup','verify-logs','catch','setActivity','setAuthor','secure-verify','content','find','You\x20completed\x20the\x20verification!\x20Please\x20wait\x20a\x20while\x20to\x20get\x20your\x20role...','STREAMING','verifycheck','setup-channel','Creating\x20the\x20channels\x20and\x20roles...\x20Please\x20give\x20at\x20least\x201\x20minute\x20for\x20complete\x20setup.','721535vaKorP','Server\x20Info:\x20\x0a\x20\x0a\x20','awaitReactions','v-help','discord.js','202829dlXKlV','Verify\x20channel:\x20','No\x20reaction\x20after\x2030\x20seconds,\x20operation\x20canceled','Completed!\x20Info:\x20\x0a\x20\x0a\x20**Channel\x20Info:**\x20\x0a\x20\x0a\x20Quick\x20Redirect:\x20','ERROR\x20OCCURED:\x20\x0a\x20\x0a\x20```You\x20can\x20only\x20use\x20this\x20command\x20in\x20the\x20setup\x20verify\x20channel.```\x20\x0a\x20Verify\x20channel:','send','reactions','\x20\x0a\x20Verify\x20Channel\x20ID:\x20','4CiHMEK','A\x20user\x20has\x20verified.\x20\x0a\x20User\x20name:\x20','delete','Are\x20you\x20sure\x20you\x20want\x20to\x20unVerify?','setup\x20|\x20Sets\x20up\x20the\x20channel,\x20role\x20and\x20also\x20the\x20bot!\x20\x0a\x20'];const _0x3bb5=function(_0x3e7f82,_0x35a3d5){_0x3e7f82=_0x3e7f82-0xc4;let _0x2a09a6=_0x2a09[_0x3e7f82];return _0x2a09a6;};const _0x2d8fd9=_0x3bb5;(function(_0x4d0d6b,_0xb2ee9e){const _0x402d25=_0x3bb5;while(!![]){try{const _0x5de0f0=parseInt(_0x402d25(0xdb))+-parseInt(_0x402d25(0xd0))*-parseInt(_0x402d25(0xda))+-parseInt(_0x402d25(0xe1))+-parseInt(_0x402d25(0xf6))+-parseInt(_0x402d25(0x109))+parseInt(_0x402d25(0xfb))*-parseInt(_0x402d25(0x103))+parseInt(_0x402d25(0x11d));if(_0x5de0f0===_0xb2ee9e)break;else _0x4d0d6b['push'](_0x4d0d6b['shift']());}catch(_0x30893d){_0x4d0d6b['push'](_0x4d0d6b['shift']());}}}(_0x2a09,0x83a15));const Discord=require(_0x2d8fd9(0xfa)),bot=new Discord['Client']();bot['on'](_0x2d8fd9(0x116),()=>{const _0x4af472=_0x2d8fd9;console[_0x4af472(0x127)]('Online...'),bot[_0x4af472(0x10a)][_0x4af472(0xec)](_0x4af472(0xf9),{'type':_0x4af472(0xf2),'url':_0x4af472(0xe3)})[_0x4af472(0xeb)](console[_0x4af472(0x119)]);const _0x1785e0=new Discord[(_0x4af472(0x11f))]()[_0x4af472(0x126)](_0x4af472(0x134)+bot[_0x4af472(0x137)][_0x4af472(0xd3)][_0x4af472(0xd8)]+_0x4af472(0x112));bot['channels']['cache'][_0x4af472(0x131)](OnlineMessageChannelID)[_0x4af472(0x100)](_0x1785e0);}),bot['on'](_0x2d8fd9(0xc4),async _0x403dd8=>{const _0x5cabff=_0x2d8fd9;if(_0x403dd8[_0x5cabff(0x10f)][_0x5cabff(0x108)])return;if(!_0x403dd8[_0x5cabff(0xef)]['startsWith'](prefix))return;const _0x78b327=_0x403dd8[_0x5cabff(0xef)][_0x5cabff(0x11e)](prefix[_0x5cabff(0x129)])['trim']()['split'](/ +/g),_0x4ffada=_0x78b327[_0x5cabff(0xd4)]();if(_0x4ffada==_0x5cabff(0x12e)){const _0x48d755=new Discord[(_0x5cabff(0x11f))]()[_0x5cabff(0xed)](_0x403dd8['author'][_0x5cabff(0x121)],_0x403dd8[_0x5cabff(0x10f)][_0x5cabff(0x138)]({'dynamic':!![]}))[_0x5cabff(0x10e)](_0x5cabff(0xe8))[_0x5cabff(0xcb)](_0x5cabff(0xca))[_0x5cabff(0x126)](_0x5cabff(0x114)+prefix+_0x5cabff(0x107)+prefix+'setup-channel\x20|\x20Sets\x20up\x20the\x20channel\x20only!\x20\x0a\x20'+prefix+_0x5cabff(0x13b)+prefix+_0x5cabff(0x10d)+prefix+'verifycheck\x20|\x20Checks\x20if\x20you\x20are\x20verified.\x20\x0a\x20'+prefix+_0x5cabff(0x12c));_0x403dd8[_0x5cabff(0x118)][_0x5cabff(0x100)](_0x48d755);}if(_0x4ffada==_0x5cabff(0xe9))if(_0x403dd8[_0x5cabff(0x115)][_0x5cabff(0x10b)](_0x5cabff(0xd6))){const _0xb8cf2f=new Discord[(_0x5cabff(0x11f))]()[_0x5cabff(0x126)](_0x5cabff(0xf5));msg=await _0x403dd8[_0x5cabff(0x118)]['send'](_0xb8cf2f),_0x403dd8['guild']['channels'][_0x5cabff(0xe4)](_0x5cabff(0xee),{'reason':_0x5cabff(0x122)})[_0x5cabff(0x123)](_0x533497=>{const _0x1f3eb9=_0x5cabff;_0x403dd8['guild']['roles']['create']({'data':{'name':_0x1f3eb9(0x133),'color':'GREEN'},'reason':_0x1f3eb9(0x122)})[_0x1f3eb9(0x123)](_0x4bea03=>{const _0x101bdf=_0x1f3eb9,_0x8d84c3=new Discord[(_0x101bdf(0x11f))]()[_0x101bdf(0x126)](_0x101bdf(0xfe)+_0x533497+_0x101bdf(0x10c)+_0x533497['id']+_0x101bdf(0xe0)+_0x4bea03+_0x101bdf(0x132)+_0x4bea03['id']);msg[_0x101bdf(0xe7)](_0x8d84c3);});});}else{const _0x11e237=new Discord[(_0x5cabff(0x11f))]()['setAuthor'](_0x403dd8[_0x5cabff(0x10f)]['username'],_0x403dd8[_0x5cabff(0x10f)][_0x5cabff(0xdd)]({'dynamic':!![]}))[_0x5cabff(0x126)](_0x5cabff(0x113));_0x403dd8[_0x5cabff(0x118)]['send'](_0x11e237);}if(_0x4ffada==_0x5cabff(0xf3))if(_0x403dd8[_0x5cabff(0x115)][_0x5cabff(0x11c)][_0x5cabff(0xd3)][_0x5cabff(0xf0)](_0x582620=>_0x582620[_0x5cabff(0xd2)]==='Securely\x20Verified')){const _0x13cfda=new Discord[(_0x5cabff(0x11f))]()[_0x5cabff(0xed)](_0x403dd8[_0x5cabff(0x10f)][_0x5cabff(0x121)],_0x403dd8['author']['displayAvatarURL']({'dynamic':!![]}))[_0x5cabff(0x126)]('Verify\x20Check\x20Results:\x20\x0a\x20\x0a\x20```True,\x20you\x20are\x20verified.```');msg=await _0x403dd8[_0x5cabff(0x118)][_0x5cabff(0x100)](_0x13cfda),_0x403dd8['delete']();}else{const _0x502084=new Discord['MessageEmbed']()[_0x5cabff(0xed)](_0x403dd8[_0x5cabff(0x10f)][_0x5cabff(0x121)],_0x403dd8['author'][_0x5cabff(0xdd)]({'dynamic':!![]}))['setDescription']('Verify\x20Check\x20Results:\x20\x0a\x20\x0a\x20```False,\x20you\x20are\x20not\x20verified.```');msg=await _0x403dd8['channel']['send'](_0x502084),_0x403dd8['delete']();}if(_0x4ffada==_0x5cabff(0x12d)){if(_0x403dd8[_0x5cabff(0x118)][_0x5cabff(0xd2)]===_0x5cabff(0xee)){if(_0x403dd8[_0x5cabff(0x115)][_0x5cabff(0x11c)][_0x5cabff(0xd3)][_0x5cabff(0xf0)](_0x17a37c=>_0x17a37c['name']===_0x5cabff(0x133))){const _0x178b5f=new Discord['MessageEmbed']()[_0x5cabff(0xed)](_0x403dd8[_0x5cabff(0x10f)]['username'],_0x403dd8['author'][_0x5cabff(0xdd)]({'dynamic':!![]}))[_0x5cabff(0x126)]('You\x20already\x20have\x20the\x20Verified\x20role,\x20you\x20do\x20not\x20need\x20to\x20verify.');msg=await _0x403dd8['channel'][_0x5cabff(0x100)](_0x178b5f),_0x403dd8['delete']();}else if(_0x403dd8['member'][_0x5cabff(0xcf)][_0x5cabff(0x11c)]['cache'][_0x5cabff(0xf0)](_0x2a28d5=>_0x2a28d5['name']===_0x5cabff(0x133))){let _0x53cefb=['1','2','3','4','5','6','7','8','9'],_0x545b34=''+_0x53cefb[Math[_0x5cabff(0xdf)](Math['random']()*_0x53cefb['length'])]+_0x53cefb[Math[_0x5cabff(0xdf)](Math[_0x5cabff(0xd9)]()*_0x53cefb[_0x5cabff(0x129)])]+_0x53cefb[Math[_0x5cabff(0xdf)](Math['random']()*_0x53cefb[_0x5cabff(0x129)])]+_0x53cefb[Math[_0x5cabff(0xdf)](Math[_0x5cabff(0xd9)]()*_0x53cefb[_0x5cabff(0x129)])];const _0x521bf2=new Discord[(_0x5cabff(0x11f))]()[_0x5cabff(0xed)](_0x403dd8['author'][_0x5cabff(0x121)],_0x403dd8[_0x5cabff(0x10f)][_0x5cabff(0xdd)]({'dynamic':!![]}))[_0x5cabff(0x10e)]('Verify')[_0x5cabff(0x126)](_0x5cabff(0xcd)+_0x545b34+_0x5cabff(0x125));msg3=await _0x403dd8[_0x5cabff(0x118)][_0x5cabff(0x100)](_0x521bf2);const _0x47e32d=_0x368ff6=>_0x368ff6[_0x5cabff(0x10f)]['id']===_0x403dd8['author']['id'];_0x403dd8['channel'][_0x5cabff(0xce)](_0x47e32d,{'max':0x1,'time':0x7530})[_0x5cabff(0x123)](async _0x10dd33=>{const _0x1a4b9a=_0x5cabff,_0x4b6ea2=_0x10dd33[_0x1a4b9a(0xc8)]();var _0x18a169=_0x4b6ea2[_0x1a4b9a(0xef)][_0x1a4b9a(0x110)]('\x20')[_0x1a4b9a(0x11e)](0x0)[_0x1a4b9a(0xe5)]('\x20');if(_0x4b6ea2['content']['toLowerCase']()===''+_0x545b34){const _0x3fe7a4=new Discord[(_0x1a4b9a(0x11f))]()[_0x1a4b9a(0xed)](_0x403dd8[_0x1a4b9a(0x10f)][_0x1a4b9a(0x121)],_0x403dd8[_0x1a4b9a(0x10f)][_0x1a4b9a(0xdd)]({'dynamic':!![]}))['setDescription'](_0x1a4b9a(0xf1));msg3[_0x1a4b9a(0xe7)](_0x3fe7a4),_0x4b6ea2[_0x1a4b9a(0x105)](),_0x403dd8[_0x1a4b9a(0x105)]();var _0x537cb1=_0x403dd8[_0x1a4b9a(0x115)][_0x1a4b9a(0xcf)]['roles'][_0x1a4b9a(0xd3)][_0x1a4b9a(0xf0)](_0x37e71c=>_0x37e71c[_0x1a4b9a(0xd2)]===_0x1a4b9a(0x133));_0x403dd8['member'][_0x1a4b9a(0x11c)][_0x1a4b9a(0x139)](_0x537cb1)[_0x1a4b9a(0x123)](_0x2f54cb=>{const _0x4e9b2f=_0x1a4b9a,_0x2a7a89=new Discord[(_0x4e9b2f(0x11f))]()[_0x4e9b2f(0xed)](_0x403dd8[_0x4e9b2f(0x10f)][_0x4e9b2f(0x121)],_0x403dd8[_0x4e9b2f(0x10f)][_0x4e9b2f(0xdd)]({'dynamic':!![]}))['setDescription']('Your\x20role\x20has\x20been\x20added!\x20Role\x20added:\x20'+_0x537cb1);msg3['edit'](_0x2a7a89);});let _0x3fb323=_0x403dd8[_0x1a4b9a(0xcf)][_0x1a4b9a(0x117)][_0x1a4b9a(0xd3)][_0x1a4b9a(0xf0)](_0xd27c09=>{const _0x1a6cdf=_0x1a4b9a;_0xd27c09[_0x1a6cdf(0xd2)]==_0x1a6cdf(0xea)&&_0xd27c09['send'](_0x1a6cdf(0x104)+_0x403dd8[_0x1a6cdf(0x10f)][_0x1a6cdf(0x121)]+'\x20\x0a\x20User\x20ID:\x20'+_0x403dd8['author']['id']+_0x1a6cdf(0x124)+new Date());});}else{const _0x2fc4bf=new Discord[(_0x1a4b9a(0x11f))]()[_0x1a4b9a(0xed)](_0x403dd8['author'][_0x1a4b9a(0x121)],_0x403dd8['author']['displayAvatarURL']({'dynamic':!![]}))[_0x1a4b9a(0x126)]('You\x20have\x20failed\x20the\x20verification.\x20To\x20try\x20again,\x20please\x20use\x20the\x20command:\x20`'+prefix+_0x1a4b9a(0x11a));msg3[_0x1a4b9a(0xe7)](_0x2fc4bf),_0x4b6ea2[_0x1a4b9a(0x105)](),_0x403dd8[_0x1a4b9a(0x105)]();}})[_0x5cabff(0xeb)](()=>{const _0x537bfd=_0x5cabff,_0x2bfe6e=new Discord[(_0x537bfd(0x11f))]()[_0x537bfd(0xed)](_0x403dd8[_0x537bfd(0x10f)]['username'],_0x403dd8[_0x537bfd(0x10f)][_0x537bfd(0xdd)]({'dynamic':!![]}))[_0x537bfd(0x126)]('No\x20response\x20in\x2030\x20seconds.\x20Please\x20retry\x20by\x20using\x20the\x20command\x20`'+prefix+_0x537bfd(0x11a));msg3['edit'](_0x2bfe6e),_0x403dd8['delete']();});}else{const _0x11e761=new Discord[(_0x5cabff(0x11f))]()[_0x5cabff(0xed)](_0x403dd8['author'][_0x5cabff(0x121)],_0x403dd8[_0x5cabff(0x10f)][_0x5cabff(0xdd)]({'dynamic':!![]}))['setDescription'](_0x5cabff(0x111));msg4=await _0x403dd8[_0x5cabff(0x118)][_0x5cabff(0x100)](_0x11e761),_0x403dd8[_0x5cabff(0x105)]();}}else if(_0x403dd8[_0x5cabff(0xcf)][_0x5cabff(0x117)][_0x5cabff(0xd3)][_0x5cabff(0xf0)](_0x5ad630=>_0x5ad630[_0x5cabff(0xd2)]===_0x5cabff(0xee))){var _0x2dfab6=_0x403dd8[_0x5cabff(0xcf)]['channels']['cache'][_0x5cabff(0xf0)](_0x47bfbb=>_0x47bfbb[_0x5cabff(0xd2)]===_0x5cabff(0xee));const _0x192517=new Discord[(_0x5cabff(0x11f))]()[_0x5cabff(0xed)](_0x403dd8[_0x5cabff(0x10f)]['username'],_0x403dd8['author'][_0x5cabff(0xdd)]({'dynamic':!![]}))[_0x5cabff(0x126)](_0x5cabff(0xff)+(_0x5cabff(0xd7)+_0x2dfab6['id']+'>'));_0x403dd8[_0x5cabff(0x118)]['send'](_0x192517),_0x403dd8[_0x5cabff(0x105)]();}else{const _0x3af640=new Discord[(_0x5cabff(0x11f))]()[_0x5cabff(0xed)](_0x403dd8[_0x5cabff(0x10f)]['username'],_0x403dd8['author'][_0x5cabff(0xdd)]({'dynamic':!![]}))[_0x5cabff(0x126)](_0x5cabff(0x11b)+prefix+'setup-channel\x20to\x20setup```');_0x403dd8[_0x5cabff(0x118)]['send'](_0x3af640),_0x403dd8[_0x5cabff(0x105)]();}}if(_0x4ffada=='unverify')if(_0x403dd8[_0x5cabff(0x115)][_0x5cabff(0x11c)]['cache']['find'](_0x1d3c8f=>_0x1d3c8f[_0x5cabff(0xd2)]===_0x5cabff(0x133))){const _0x5d4514=new Discord[(_0x5cabff(0x11f))]()[_0x5cabff(0xed)](_0x403dd8[_0x5cabff(0x10f)]['username'],_0x403dd8['author'][_0x5cabff(0xdd)]({'dynamic':!![]}))[_0x5cabff(0x126)](_0x5cabff(0x106));msg5=await _0x403dd8[_0x5cabff(0x118)]['send'](_0x5d4514),msg5[_0x5cabff(0x120)]('✅')[_0x5cabff(0x123)](_0x1a270c=>{const _0x275716=_0x5cabff;msg5[_0x275716(0x120)]('❌');}),msg5[_0x5cabff(0xf8)]((_0xb99971,_0xb9ce39)=>_0xb9ce39['id']==_0x403dd8[_0x5cabff(0x10f)]['id']&&(_0xb99971[_0x5cabff(0x136)][_0x5cabff(0xd2)]=='✅'||_0xb99971['emoji'][_0x5cabff(0xd2)]=='❌'),{'max':0x1,'time':![]})[_0x5cabff(0x123)](async _0x1604a5=>{const _0x4ef49c=_0x5cabff;if(_0x1604a5[_0x4ef49c(0xc8)]()[_0x4ef49c(0x136)][_0x4ef49c(0xd2)]=='✅'){var _0x5024ae=_0x403dd8['member'][_0x4ef49c(0x11c)][_0x4ef49c(0xd3)][_0x4ef49c(0xf0)](_0x9b2a66=>_0x9b2a66['name']===_0x4ef49c(0x133));_0x403dd8[_0x4ef49c(0x115)]['roles'][_0x4ef49c(0x12b)](_0x5024ae);const _0x25f8d8=new Discord[(_0x4ef49c(0x11f))]()['setAuthor'](_0x403dd8[_0x4ef49c(0x10f)][_0x4ef49c(0x121)],_0x403dd8[_0x4ef49c(0x10f)][_0x4ef49c(0xdd)]({'dynamic':!![]}))[_0x4ef49c(0x126)](_0x4ef49c(0x13a));msg5['edit'](_0x25f8d8),msg5[_0x4ef49c(0x101)]['removeAll'](),_0x403dd8['delete']();}if(_0x1604a5[_0x4ef49c(0xc8)]()[_0x4ef49c(0x136)]['name']=='❌'){const _0xc1b8f3=new Discord[(_0x4ef49c(0x11f))]()[_0x4ef49c(0xed)](_0x403dd8[_0x4ef49c(0x10f)]['username'],_0x403dd8[_0x4ef49c(0x10f)][_0x4ef49c(0xdd)]({'dynamic':!![]}))[_0x4ef49c(0x126)](_0x4ef49c(0x12a));msg5[_0x4ef49c(0xe7)](_0xc1b8f3),msg5[_0x4ef49c(0x101)][_0x4ef49c(0x130)](),_0x403dd8[_0x4ef49c(0x105)]();}})[_0x5cabff(0xeb)](()=>{const _0x495027=_0x5cabff;msg[_0x495027(0xd1)](_0x495027(0xfd)),msg[_0x495027(0x101)][_0x495027(0x130)]();});}else{const _0x2c6462=new Discord['MessageEmbed']()[_0x5cabff(0xed)](_0x403dd8[_0x5cabff(0x10f)][_0x5cabff(0x121)],_0x403dd8[_0x5cabff(0x10f)]['displayAvatarURL']({'dynamic':!![]}))['setDescription']('ERROR\x20OCCURED:\x20\x0a\x20\x0a\x20```You\x20are\x20not\x20verified.```');_0x403dd8[_0x5cabff(0x118)]['send'](_0x2c6462),_0x403dd8[_0x5cabff(0x105)]();}if(_0x4ffada==_0x5cabff(0xf4)){const _0x252a35=new Discord[(_0x5cabff(0x11f))]()[_0x5cabff(0xed)](_0x403dd8['author'][_0x5cabff(0x121)],_0x403dd8[_0x5cabff(0x10f)][_0x5cabff(0xdd)]({'dynamic':!![]}))[_0x5cabff(0x126)]('Setting\x20up\x20the\x20channel\x20for\x20you...');msg6=await _0x403dd8[_0x5cabff(0x118)][_0x5cabff(0x100)](_0x252a35),_0x403dd8[_0x5cabff(0x105)](),_0x403dd8[_0x5cabff(0xcf)][_0x5cabff(0x117)][_0x5cabff(0xe4)](_0x5cabff(0xee),{'reason':'Setup\x20for\x20Secure\x20Verify\x20Bot'})[_0x5cabff(0x123)](_0x21f27b=>{const _0x100c91=_0x5cabff,_0x150f9f=new Discord['MessageEmbed']()['setAuthor'](_0x403dd8[_0x100c91(0x10f)][_0x100c91(0x121)],_0x403dd8['author'][_0x100c91(0xdd)]({'dynamic':!![]}))['setDescription'](_0x100c91(0xcc)+_0x21f27b+_0x100c91(0x10c)+_0x21f27b['id']);msg6[_0x100c91(0xe7)](_0x150f9f);});}_0x4ffada=='membercount'&&_0x403dd8['reply'](_0x5cabff(0xc5)+_0x403dd8['guild'][_0x5cabff(0xde)]+_0x5cabff(0xc9));if(_0x4ffada==_0x5cabff(0x12f))if(_0x403dd8[_0x5cabff(0xcf)][_0x5cabff(0x117)]['cache'][_0x5cabff(0xf0)](_0xc76439=>_0xc76439[_0x5cabff(0xd2)]==='secure-verify')){var _0x2dfab6=_0x403dd8['guild'][_0x5cabff(0x117)][_0x5cabff(0xd3)][_0x5cabff(0xf0)](_0x56507c=>_0x56507c[_0x5cabff(0xd2)]==='secure-verify');if(_0x403dd8[_0x5cabff(0xcf)][_0x5cabff(0x11c)][_0x5cabff(0xd3)][_0x5cabff(0xf0)](_0x46b95d=>_0x46b95d[_0x5cabff(0xd2)]===_0x5cabff(0x133))){var _0x4ad42a=_0x403dd8[_0x5cabff(0xcf)][_0x5cabff(0x11c)][_0x5cabff(0xd3)][_0x5cabff(0xf0)](_0x59b80c=>_0x59b80c['name']===_0x5cabff(0x133));const _0x103bf2=new Discord[(_0x5cabff(0x11f))]()[_0x5cabff(0xed)](_0x403dd8[_0x5cabff(0x10f)][_0x5cabff(0x121)],_0x403dd8[_0x5cabff(0x10f)][_0x5cabff(0xdd)]({'dynamic':!![]}))[_0x5cabff(0x126)](_0x5cabff(0xf7)+_0x5cabff(0x13c)+(_0x5cabff(0xfc)+_0x2dfab6+_0x5cabff(0xe6)+_0x2dfab6['id']+_0x5cabff(0xe2)+_0x4ad42a+'\x20\x0aVerify\x20Role\x20ID:\x20'+_0x4ad42a['id']+_0x5cabff(0x128)+_0x4ad42a['position'])+_0x5cabff(0x13c));_0x403dd8[_0x5cabff(0x118)][_0x5cabff(0x100)](_0x103bf2),_0x403dd8[_0x5cabff(0x105)]();}else{const _0x534faf=new Discord[(_0x5cabff(0x11f))]()[_0x5cabff(0xed)](_0x403dd8[_0x5cabff(0x10f)][_0x5cabff(0x121)],_0x403dd8[_0x5cabff(0x10f)]['displayAvatarURL']({'dynamic':!![]}))[_0x5cabff(0x126)]('Server\x20Info:\x20\x0a\x20\x0a\x20'+'```'+('Verify\x20channel:\x20'+_0x2dfab6+_0x5cabff(0x102)+_0x2dfab6['id']+_0x5cabff(0xdc)));_0x403dd8['channel'][_0x5cabff(0x100)](_0x534faf),_0x403dd8['delete']();}}else{const _0x2f9a09=new Discord[(_0x5cabff(0x11f))]()[_0x5cabff(0xed)](_0x403dd8[_0x5cabff(0x10f)][_0x5cabff(0x121)],_0x403dd8[_0x5cabff(0x10f)][_0x5cabff(0xdd)]({'dynamic':!![]}))[_0x5cabff(0x126)](_0x5cabff(0xc7));_0x403dd8[_0x5cabff(0x118)][_0x5cabff(0x100)](_0x2f9a09),_0x403dd8['delete']();}if(_0x4ffada=='setup-role'){const _0x2e8aae=new Discord[(_0x5cabff(0x11f))]()[_0x5cabff(0xed)](_0x403dd8[_0x5cabff(0x10f)][_0x5cabff(0x121)],_0x403dd8[_0x5cabff(0x10f)]['displayAvatarURL']({'dynamic':!![]}))[_0x5cabff(0x126)](_0x5cabff(0x135));_0x403dd8[_0x5cabff(0xcf)]['roles'][_0x5cabff(0xe4)]({'data':{'name':_0x5cabff(0x133),'color':_0x5cabff(0xc6)},'reason':_0x5cabff(0x122)})[_0x5cabff(0x123)](_0x3c8b06=>{const _0x448571=_0x5cabff,_0x5520fd=new Discord[(_0x448571(0x11f))]()['setAuthor'](_0x403dd8[_0x448571(0x10f)][_0x448571(0x121)],_0x403dd8[_0x448571(0x10f)][_0x448571(0xdd)]({'dynamic':!![]}))[_0x448571(0x126)](_0x448571(0x13d)+_0x3c8b06+_0x448571(0x132)+_0x3c8b06['id']);_0x403dd8['channel'][_0x448571(0x100)](_0x5520fd),_0x403dd8[_0x448571(0x105)]();});}}),bot[_0x2d8fd9(0xd5)](PrivateTOKEN);
+bot.on("ready", () => {
+  console.log('online');
+  let online = new Discord.MessageEmbed()
+    .setTitle(`My Status:  🟢`)
+    .addField(`My Ping:`, `**${bot.ws.ping}**ms!`)
+    .addField(`My Ram Usage:`, `**${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}**MB!`)
+
+    .addField(`Bots Version:`, `**V1.2**`)
+
+    .addField(`Extra Info:`, `Watching ${bot.guilds.cache.size} Servers!`)
+    .setThumbnail(`${bot.user.avatarURL()}`)
+    .setColor(`RANDOM`)
+    .setFooter(`Im Online!`)
+    .setTimestamp()
+  bot.channels.cache.get(OnlineMessageChannelID).send(online)
+
+  setStatus('WATCHING', `Self Hosted v1!`, 'online')
+  function setStatus(statusType, statusName, statusAppearance) {
+    bot.user.setStatus
+    bot.user.setPresence({
+      status: statusAppearance,
+      activity: {
+        name: statusName,
+        type: statusType
+      }
+    })
+  }
+})
+
+
+bot.on("message", async (message) => {
+  if (message.author.bot) return;
+  if (!message.content.startsWith(prefix)) return;
+  const args = message.content.slice(prefix.length).trim().split(/ +/g);
+  const command = args.shift();
+
+  // The begining of the long script of code:
+
+
+  // SETUP | CREATES EVERYTHING
+
+  if (command == `setup`) {
+    if (message.guild.channels.cache.find(ch => ch.name == "secure-verify") && message.guild.roles.cache.find(r => r.name == "Securely Verified")) {
+      message.channel.send
+      ("GG! This server has been setup using this command already!")
+
+
+
+    } else {
+      if (message.member.hasPermission("MANAGE_CHANNELS") && message.member.hasPermission("MANAGE_ROLES")) {
+        const loading = new Discord.MessageEmbed()
+          .setDescription("Creating the channels and roles... Please give at least 1 minute for complete setup. \n Have I not edited this message in under 10-15 seconds? If this has occured please do this: \n \n - Create a Channel called: `secure-verify` \n - Create a Role called: `Securely Verified`")
+
+
+        msg = await message.channel.send(loading)
+        message.guild.channels.create("secure-verify", { reason: "Setup for Secure Verify Bot" }).then(a => {
+          message.guild.roles.create({
+            data: {
+              name: 'Securely Verified',
+              color: 'GREEN',
+            },
+            reason: 'Setup for Secure Verify Bot',
+          }).then(b => {
+            const done = new Discord.MessageEmbed()
+              .setDescription(`Completed! Info: \n \n **Channel Info:** \n \n Quick Redirect: ${a} \n Channel ID: ${a.id} \n \n **Role Info:** \n \n Role Name: ${b} \n Role ID: ${b.id} \n \n **Want to undo this action?** \n Please react with 🚫 now.`)
+            
+            msg.edit(done)
+            msg.reactions.removeAll()
+            msg.react("🚫")
+             msg.awaitReactions((reaction, user) => user.id == message.author.id && (reaction.emoji.name == '🚫'),
+                  { max: 1, time: false }).then(async collected => {
+                    if (collected.first().emoji.name == '🚫') {
+                      const Deleting = new Discord.MessageEmbed()
+                      .setDescription("Undoing your actions...")
+                      .setFooter("I am cleaning up your mess, wow...")
+                      msg.edit(Deleting)
+                      a.delete()
+                      b.delete().then(d => {
+                        const Cleaned = new Discord.MessageEmbed()
+                        .setDescription("I have cleaned your mess up... Try not to do that again!")
+                        msg.edit(Cleaned)
+                      })
+                    }
+                  })
+          })
+        })
+      } else {
+        const error = new Discord.MessageEmbed()
+          .setAuthor(message.author.username, message.author.displayAvatarURL())
+          .setDescription("ERROR OCCURED: \n \n ```You do not have permissions. Permissions required: MANAGE_CHANNELS, MANAGE_ROLES```")
+        message.channel.send(error)
+      }
+    }
+  }
+  // VERIFY COMMAND | MAIN COMMAND!
+  if (command == `verify`) {
+    if (message.channel.name === "secure-verify") {
+      if (message.member.roles.cache.find(r => r.name === "Securely Verified")) {
+        const yourole = new Discord.MessageEmbed()
+          .setAuthor(message.author.username, message.author.displayAvatarURL({ dynamic: true }))
+          .setDescription("You already have the Verified role, you do not need to verify.")
+        msg = await message.channel.send(yourole)
+        message.delete()
+      } else {
+        if (message.member.guild.roles.cache.find(role => role.name === "Securely Verified")) {
+          let nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+          let rand = `${nums[Math.floor(Math.random() * nums.length)]}${nums[Math.floor(Math.random() * nums.length)]}${nums[Math.floor(Math.random() * nums.length)]}${nums[Math.floor(Math.random() * nums.length)]}`
+          const verif = new Discord.MessageEmbed()
+            .setAuthor(message.author.username, message.author.displayAvatarURL({ dynamic: true }))
+            .setTitle(`Verification | MyVerify`)
+            .setDescription(`With this verification please reply with this code below in under 30 seconds: \n \n **__${rand}__**`)
+          msg3 = await message.channel.send(verif)
+
+          const filter = (m) => m.author.id === message.author.id
+          message.channel.awaitMessages(filter, { max: 1, time: 30000 })
+            .then(async collected => {
+              const msg = collected.first()
+              var number2 = msg.content.split(' ').slice(0).join(' ');
+              if (msg.content.toLowerCase() === `${rand}`) {
+                const complete = new Discord.MessageEmbed()
+                  .setAuthor(message.author.username, message.author.displayAvatarURL({ dynamic: true }))
+                  .setDescription("You completed the verification! Please wait a while to get your role...")
+                msg3.edit(complete)
+                msg.delete()
+                message.delete()
+                var role = message.member.guild.roles.cache.find(role => role.name === "Securely Verified");
+                message.member.roles.add(role).then(a => {
+                  const roleAdded = new Discord.MessageEmbed()
+                    .setAuthor(message.author.username, message.author.displayAvatarURL({ dynamic: true }))
+                    .setDescription(`Your role has been added! Role added: \n${role}!`)
+                    .setColor(`#56ff00`)
+                  msg3.edit(roleAdded)
+
+                })
+              } else {
+                const incorrect = new Discord.MessageEmbed()
+                  .setAuthor(message.author.username, message.author.displayAvatarURL({ dynamic: true }))
+                  .setDescription("You have failed the verification. To try again, please use the command: `v-verify`")
+                  .setColor(`#ff0000`)
+                msg3.edit(incorrect)
+                msg.delete()
+                message.delete()
+              }
+            })
+        } else {
+          const error = new Discord.MessageEmbed()
+            .setAuthor(message.author.username, message.author.displayAvatarURL({ dynamic: true }))
+            .setDescription("ERROR OCCURED: \n \n ```Your server has not been setup with the Verified Role.```")
+          msg4 = await message.channel.send(error)
+          message.delete()
+        }
+      }
+    } else {
+      if (message.guild.channels.cache.find(c => c.name === "secure-verify")) {
+        var ch = message.guild.channels.cache.find(c => c.name === "secure-verify")
+        const error5 = new Discord.MessageEmbed()
+          .setAuthor(message.author.username, message.author.displayAvatarURL({ dynamic: true }))
+          .setDescription("ERROR OCCURED: \n \n ```You can only use this command in the setup verify channel. ``` \n Verify channel:" + ` <#${ch.id}>`)
+          .setColor(`#ff0000`)
+        message.channel.send(error5)
+        message.delete()
+      } else {
+        const error6 = new Discord.MessageEmbed()
+          .setAuthor(message.author.username, message.author.displayAvatarURL({ dynamic: true }))
+          .setDescription("ERROR OCCURED: \n \n ```This server has not been setup with a verify channel. Please use the command: v-setup-channel to setup```")
+          .setColor(`#ff0000`)
+        message.channel.send(error6)
+        message.delete()
+      }
+    }
+  }
+  // Verify Check command - (Checks if ur verified)
+  if (command == `verifycheck`) {
+    if (message.member.roles.cache.find(r => r.name === "Securely Verified")) {
+      const Approved = new Discord.MessageEmbed()
+        .setAuthor(message.author.username, message.author.displayAvatarURL({ dynamic: true }))
+        .setDescription("Verify Check Results: \n \n ```True, you are verified.```")
+      msg = await message.channel.send(Approved)
+      message.delete()
+    } else {
+      const Denied = new Discord.MessageEmbed()
+        .setAuthor(message.author.username, message.author.displayAvatarURL({ dynamic: true }))
+        .setDescription("Verify Results:\n\n**You are not verified!**")
+      msg = await message.channel.send(Denied)
+      message.delete()
+    }
+  }
+
+  // Unverify Command:
+  if (command == `unverify`) {
+    if (message.member.roles.cache.find(r => r.name === "Securely Verified")) {
+      const areyousure = new Discord.MessageEmbed()
+        .setAuthor(message.author.username, message.author.displayAvatarURL({ dynamic: true }))
+        .setDescription("Are you sure you want to unVerify?")
+      msg5 = await message.channel.send(areyousure)
+      msg5.react('✅').then(e => {
+        msg5.react('❌')
+      })
+
+      msg5.awaitReactions((reaction, user) => user.id == message.author.id && (reaction.emoji.name == '✅' || reaction.emoji.name == '❌'),
+        { max: 1, time: false }).then(async collected => {
+          if (collected.first().emoji.name == '✅') {
+            var ro = message.member.roles.cache.find(r => r.name === "Securely Verified")
+            const loading = new Discord.MessageEmbed()
+              .setAuthor(message.author.username, message.author.displayAvatarURL({ dynamic: true }))
+              .setDescription("Working...")
+            msg5.edit(loading)
+            message.member.roles.remove(ro).then(() => {
+              const success = new Discord.MessageEmbed()
+                .setAuthor(message.author.username, message.author.displayAvatarURL({ dynamic: true }))
+                .setDescription("You have been unVerified! ")
+              msg5.edit(success)
+              msg5.reactions.removeAll()
+              message.delete()
+            })
+          }
+          if (collected.first().emoji.name == '❌') {
+            const ok = new Discord.MessageEmbed()
+              .setAuthor(message.author.username, message.author.displayAvatarURL({ dynamic: true }))
+              .setDescription("You have been kept verified.")
+            msg5.edit(ok)
+            msg5.reactions.removeAll()
+            message.delete()
+          }
+        }).catch(() => {
+          msg.reply('❗ No reaction after 30 seconds, operation canceled');
+          msg.reactions.removeAll()
+        });
+    } else {
+      const error4 = new Discord.MessageEmbed()
+        .setAuthor(message.author.username, message.author.displayAvatarURL({ dynamic: true }))
+        .setDescription("ERROR OCCURED: \n \n ```You are not verified.```")
+      message.channel.send(error4)
+      message.delete()
+    }
+  }
+  // Setup Channel Command
+  if (command == `setup-channel`) {
+    const loading = new Discord.MessageEmbed()
+      .setAuthor(message.author.username, message.author.displayAvatarURL({ dynamic: true }))
+      .setDescription("Setting up the channel for you...")
+    msg6 = await message.channel.send(loading)
+    message.delete()
+    message.guild.channels.create("secure-verify", { reason: "Setup for Secure Verify Bot" }).then(channel => {
+      const loaded = new Discord.MessageEmbed()
+        .setAuthor(message.author.username, message.author.displayAvatarURL())
+        .setDescription(`I have setup the channel for you: \n\nInfo:\nQuick redirect: ${channel} \n Channel ID: ${channel.id}`)
+      msg6.edit(loaded)
+    })
+  }
+
+  // Server Clean Command:
+
+  if (command == "serverclean") {
+    let owner = message.guild.ownerID
+    if (message.author.id === owner) {
+      message.reply("❗❗ Are you SURE you want to do this? This will wipe the server CLEAN! It will delete channels, categories, people and roles! Type `yes` to continue. PLEASE NOTE: This can take up to 10 minutes to fully delete every channel. Please be patient.")
+      const filter = (m) => m.author.id === message.author.id
+      message.channel.awaitMessages(filter, { max: 1, time: 30000 })
+        .then(async collected => {
+          const msg = collected.first()
+          if (msg.content.toLowerCase() === `yes`) {
+            msg.channel.send("Deleting everything...")
+            msg.guild.channels.cache.forEach(ch => {
+              ch.delete()
+            })
+            msg.guild.roles.cache.forEach(r => {
+              r.delete()
+            })
+
+            msg.guild.members.cache.forEach(mem => {
+              mem.kick()
+              mem.send("Sadly `" + msg.guild.name + "` had a server clean! This kicked everyone from the server.")
+            })
+            msg.guild.channels.create("General", { reason: "To reply of course!" }).then(msg2222 => {
+              msg2222.send("Deleted all channels, roles and people I was available to delete. There may be some left over due to my rank.\n Don't worry! They will delete in under 24 hours.")
+            })
+
+          } else {
+            msg.reply("Okay!")
+          }
+        }).catch(() => {
+          const noreply = new Discord.MessageEmbed()
+            .setAuthor(message.author.username, message.author.displayAvatarURL({ dynamic: true }))
+            .setDescription("No response in 30 seconds. Please retry by using the command `v-serverclean`")
+          msg3.edit(noreply)
+          message.delete()
+        })
+    } else {
+      message.reply("You must be owner to do this!")
+    }
+  }
+
+  if (command == `serverinfo`) {
+    if (message.guild.channels.cache.find(c => c.name === "secure-verify")) {
+      var ch = message.guild.channels.cache.find(c => c.name === "secure-verify")
+      if (message.guild.roles.cache.find(r => r.name === "Securely Verified")) {
+        var rol = message.guild.roles.cache.find(r => r.name === "Securely Verified")
+        const info1 = new Discord.MessageEmbed()
+          .setAuthor(message.author.username, message.author.displayAvatarURL({ dynamic: true }))
+          .setDescription("Server Info: \n \n " + "```" + `Verify channel: ${ch} \nVerify Channel ID: ${ch.id} \nVerify Role: ${rol} \nVerify Role ID: ${rol.id} \nVerify Role Position: ${rol.position}` + "```")
+        message.channel.send(info1)
+        message.delete()
+      } else {
+        const info3 = new Discord.MessageEmbed()
+          .setAuthor(message.author.username, message.author.displayAvatarURL({ dynamic: true }))
+          .setDescription("Server Info: \n \n " + "```" + `Verify channel: ${ch} \n Verify Channel ID: ${ch.id} \n Verify Role: None \n Verify Role ID: None \n Verified Members: None`)
+        message.channel.send(info3)
+        message.delete()
+      }
+    } else {
+      const info2 = new Discord.MessageEmbed()
+        .setAuthor(message.author.username, message.author.displayAvatarURL({ dynamic: true }))
+        .setDescription("Test")
+      message.channel.send(info2)
+      message.delete()
+    }
+  }
+
+  if (command == `setup-role`) {
+    const load = new Discord.MessageEmbed()
+      .setAuthor(message.author.username, message.author.displayAvatarURL({ dynamic: true }))
+      .setDescription("Creating the role...")
+    message.guild.roles.create({
+      data: {
+        name: 'Securely Verified',
+        color: 'GREEN',
+      },
+      reason: 'Setup for Secure Verify Bot',
+    }).then(role => {
+      const done = new Discord.MessageEmbed()
+        .setAuthor(message.author.username, message.author.displayAvatarURL({ dynamic: true }))
+        .setDescription(`Created the role! Info: \n \n Role: ${role} \n Role ID: ${role.id}`)
+      message.channel.send(done)
+      message.delete()
+    })
+  }
+
+  if (command == `leave`) {
+    if (message.author.id === message.guild.ownerID) {
+    const EE = new Discord.MessageEmbed()
+    .setDescription("Okay! Thats cool, I am leaving now. I will see you around!")
+    message.channel.send(EE)
+    message.guild.leave()
+    } else {
+      message.delete()
+    }
+  }
+});
+
+// Ping
+
+bot.on('message', msg => {
+  if (msg.content.toLowerCase().startsWith(`${prefix}ping`)) {
+    let message = new Discord.MessageEmbed()
+      .setTitle(`My Ping:`)
+      .setDescription(`Bot: **${bot.ws.ping}**ms\n API: **${Date.now() - msg.createdTimestamp}**ms`)
+      .setThumbnail(bot.user.avatarURL())
+    msg.channel.send(message);
+  }
+
+})
+
+bot.login(PrivateTOKEN)
